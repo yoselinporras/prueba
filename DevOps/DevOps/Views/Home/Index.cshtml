@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Demo DevOps";
+}
+
+<div class="hero">
+    <div class="intro">
+        <h1 class="fade-in">🚀 Bienvenidos al Demo DevOps</h1>
+        <p class="fade-in delay-1">Este proyecto demuestra un pipeline CI/CD en Azure DevOps con .NET 8</p>
+    </div>
+</div>
+
+<div class="container fade-in delay-2">
+    <h2>Demostración en acción</h2>
+    <p>Versión del demo: 1.0.0</p>
+
+    <button class="btn" onclick="cambiarColor()">Cambiar color de fondo</button>
+</div>
+
+<div class="credits fade-in delay-3">
+    <h3>Equipo del proyecto</h3>
+    <ul>
+        <li>Victor Campos</li>
+        <li>Silvia Gamboa</li>
+        <li>Kenneth Oshima</li>
+        <li>Yoselin Porras</li>
+        <li>Valentina Rojas</li>
+    </ul>
+</div>
+
+<script>
+    function cambiarColor() {
+        document.body.style.backgroundColor =
+            "#" + Math.floor(Math.random() * 16777215).toString(16);
+    }
+</script>
