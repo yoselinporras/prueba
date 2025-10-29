@@ -1,1 +1,43 @@
+name: Build .NET 8
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:   # permite ejecutarlo manualmente desde la pestaña Actions
+
+jobs:
+  build:
+    runs-on: windows-latest   # podés usar ubuntu-latest si preferís Linux
+
+    steps:
+    # 1️⃣ Descarga el código del repo
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2️⃣ Instala el SDK de .NET 8
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    # 3️⃣ Restaura dependencias (paquetes NuGet)
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # 4️⃣ Compila el proyecto en modo Release
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+
+    # 5️⃣ (Opcional) Ejecuta los tests si los tenés
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal
+
+    # 6️⃣ (Opcional) Guarda los binarios compilados como artefacto descargable
+    - name: Upload compiled files
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-output
+        path: '**/bin/Release/**'
 
