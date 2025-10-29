@@ -101,3 +101,39 @@ button.btn {
     .credits li {
         margin: 5px 0;
     }
+
+.animation-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #3b82f6; /* Azul Bootstrap */
+    animation: bounce 1.2s infinite ease-in-out;
+}
+
+    .circle.delay1 {
+        animation-delay: 0.2s;
+    }
+
+    .circle.delay2 {
+        animation-delay: 0.4s;
+    }
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
