@@ -41,16 +41,16 @@ variables:
 
 steps:
 # Instala NuGet
-- task: NuGetToolInstaller@1
+  - task: NuGetToolInstaller@1
 
 # Restaura dependencias
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '$(solution)'
 
 # Compila el proyecto (sin empaquetar ni publicar)
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: VSBuild@1
+    inputs:
+      solution: '$(solution)'
+      platform: '$(buildPlatform)'
+      configuration: '$(buildConfiguration)'
